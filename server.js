@@ -45,3 +45,10 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`🚀 Server running on Render at port ${PORT}`)
 );
+
+// ---------- Prevent Render Free Tier Sleep ----------
+setInterval(() => {
+  fetch("https://elevate-e1yu.onrender.com/")
+    .then(() => console.log("🔁 Self-ping to keep backend awake"))
+    .catch(() => {});
+}, 10000); // every 10 sec
