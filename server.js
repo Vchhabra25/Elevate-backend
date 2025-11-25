@@ -6,8 +6,7 @@ const mongoose = require("mongoose");
 const tasksRouter = require("./routes/tasks");
 const groupsRouter = require("./routes/groups");
 const aiRouter = require("./routes/ai");
-import focusRoutes from "./routes/focus.js";
-app.use("/focus", focusRoutes);
+const focusRoutes = require("./routes/focus");
 
 
 const app = express();
@@ -37,6 +36,8 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use("/tasks", tasksRouter);
 app.use("/groups", groupsRouter);
 app.use("/ai", aiRouter);
+app.use("/focus", focusRoutes);
+
 
 // ---------- Base Route ----------
 app.get("/", (req, res) => {

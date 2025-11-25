@@ -1,8 +1,12 @@
-import express from "express";
-import FocusSession from "../models/FocusSession.js";
+// backend/routes/focus.js
+const express = require("express");
+const FocusSession = require("../models/FocusSession");
 
 const router = express.Router();
 
+/*
+  GET all focus sessions
+*/
 router.get("/", async (req, res) => {
   try {
     const sessions = await FocusSession.find().sort({ createdAt: -1 });
@@ -12,6 +16,9 @@ router.get("/", async (req, res) => {
   }
 });
 
+/*
+  POST a new focus session
+*/
 router.post("/", async (req, res) => {
   try {
     const { duration } = req.body;
@@ -33,4 +40,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
