@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const tasksRouter = require("./routes/tasks");
 const groupsRouter = require("./routes/groups");
 const aiRouter = require("./routes/ai");
+import focusRoutes from "./routes/focus.js";
+app.use("/focus", focusRoutes);
+
 
 const app = express();
 

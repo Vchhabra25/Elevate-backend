@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
-const focusSessionSchema = new mongoose.Schema({
-  duration: { type: Number, required: true },
-  date: { type: Date, default: Date.now }
+const FocusSchema = new mongoose.Schema({
+  duration: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-export default mongoose.model("FocusSession", focusSessionSchema);
+export default mongoose.model("FocusSession", FocusSchema);
