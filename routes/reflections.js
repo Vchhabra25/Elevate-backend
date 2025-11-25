@@ -1,18 +1,27 @@
-import express from "express";
-import Reflection from "../models/Reflection.js";
+const express = require("express");
+const Reflection = require("../models/Reflection");
 
 const router = express.Router();
 
+// GET all reflections
 router.get("/", async (req, res) => {
-  const reflections = await Reflection.find();
-  res.json(reflections);
+  try {
+    const reflections = await Reflection.find();
+    res.json(reflections);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching reflections" });
+  }
 });
 
+// POST add a reflection
 router.post("/", async (req, res) => {
-  const { note } = req.body;
-  const reflection = new Reflection({ note });
-  await reflection.save();
-  res.json({ message: "Reflection added", reflection });
+  try {
+    const reflection = new Reflection(req.body);
+    await reflection.save();
+    res.json({ message: "Reflection added", reflection });
+  } catch (err) {
+    res.status(500).json({ message: "Error saving reflection" });
+  }
 });
 
-export default router;
+module.exports = router;

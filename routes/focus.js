@@ -1,6 +1,6 @@
-import express from "express";
-import FocusSession from "../models/FocusSession.js";
 
+const express = require("express");
+const FocusSession = require("../models/FocusSession.js");
 const router = express.Router();
 
 // Get all sessions
