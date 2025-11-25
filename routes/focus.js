@@ -1,6 +1,6 @@
-
 const express = require("express");
 const FocusSession = require("../models/FocusSession.js");
+
 const router = express.Router();
 
 // Get all sessions
@@ -17,7 +17,10 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const { duration } = req.body;
-    if (!duration) return res.status(400).json({ error: "Duration required" });
+
+    if (!duration) {
+      return res.status(400).json({ error: "Duration required" });
+    }
 
     const session = new FocusSession({ duration });
     await session.save();
@@ -28,4 +31,5 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
+// ⭐ Correct CommonJS export
+module.exports = router;
