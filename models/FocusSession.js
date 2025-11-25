@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const focusSessionSchema = new mongoose.Schema(
   {
@@ -8,4 +8,4 @@ const focusSessionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("FocusSession", focusSessionSchema);
+module.exports = mongoose.model("FocusSession", focusSessionSchema);
