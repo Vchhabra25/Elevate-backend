@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const FocusSchema = new mongoose.Schema({
   duration: {
@@ -11,4 +11,4 @@ const FocusSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("FocusSession", FocusSchema);
+module.exports = mongoose.model("FocusSession", FocusSchema);
